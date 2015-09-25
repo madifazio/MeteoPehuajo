@@ -1,0 +1,16 @@
+{
+  "name": "MeteoPehuajo",
+  "version": "1.0.0",
+  "description": "Pagina para mostrar lluvia caída",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lluvia",
+    "pehuajó",
+    "meteorología"
+  ],
+  "author": "Marcos Di Fazio (madifazio@gmail.com)",
+  "license": "ISC"
+}
