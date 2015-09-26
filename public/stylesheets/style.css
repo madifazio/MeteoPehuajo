@@ -1,0 +1,81 @@
+#foot
+{
+  background-color: rgb(165, 165, 165);
+  color: white;
+  clear: both;
+  text-align: center;
+  padding: 5px;
+  position: fixed;
+  bottom: 0px;
+  z-index: 5;
+  width: 100%;
+}
+#head {
+    background-color: rgb(161, 194, 255);
+    text-align: center;
+    padding: 2px;
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    height: 50px;
+    z-index: 5;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    color: white;
+}
+#content {
+    background-color: lightcyan;
+    padding: 5px 0 30px 0px;
+    margin: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
+
+body {
+  margin: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(231, 231, 231);
+  text-align: center;
+}
+
+div#humedad {
+    float: left;
+    width: 33%;
+}
+
+div#precipitacion {
+    float: left;
+    width: 33%;
+}
+
+div#temperatura {
+    float: left;
+    width: 33%;
+}
+
+div#publiRight {
+    float: right;
+}
+
+div#publiLeft {
+    float: left;
+    top: 1px;
+    bottom: 0px;
+    overflow-y: hidden;
+}
+
+.publicidad {
+  width: 200px;
+  text-align: center;
+  background: white;
+  height: 100%;
+  padding-bottom: 54px;
+}
+
+div#fondo {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    margin-top: 15px;
+    padding: 40px 0px 0px 0px;
+}

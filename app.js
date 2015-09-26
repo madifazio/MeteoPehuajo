@@ -1,3 +1,4 @@
+var path = require('path');
 var mongoose = require('mongoose');
 var express = require('express');
 var routes = require('./routes');
@@ -10,6 +11,8 @@ mongoose.connect('mongodb://localhost',function(err){
 
   // inicializo la aplicación
   var app = express();
+  app.use(express.static(path.join(__dirname, 'public')));
+
   middleware(app);
   routes(app);
 

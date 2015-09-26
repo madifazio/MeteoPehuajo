@@ -2,15 +2,17 @@ html5
 html
   head
     title= pageTitle
+    link(rel='stylesheet', href='/stylesheets/style.css')
   body
     header
       #head 
         h1= pageTitle
       #foot
         p pie de página
-      #publiLeft
-        p publicidad izquierda
-      #publiRight
-        p publicidad derecha
-      #content
-        block content
+      #fondo
+        #publiLeft.publicidad
+          p publicidad izquierda
+        #publiRight.publicidad
+          p publicidad derecha
+        #content
+          block content
