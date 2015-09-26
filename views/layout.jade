@@ -4,6 +4,13 @@ html
     title= pageTitle
   body
     header
-      h1= pageTitle
-    section.content
-      block content
+      #head 
+        h1= pageTitle
+      #foot
+        p pie de página
+      #publiLeft
+        p publicidad izquierda
+      #publiRight
+        p publicidad derecha
+      #content
+        block content
