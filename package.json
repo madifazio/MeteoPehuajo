@@ -1,8 +1,13 @@
 {
   "name": "MeteoPehuajo",
   "version": "1.0.0",
+  "private": true,
   "description": "Pagina para mostrar lluvia caída",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madifazio/MeteoPehuajo"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,5 +17,9 @@
     "meteorología"
   ],
   "author": "Marcos Di Fazio (madifazio@gmail.com)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongoose": "^4.1.8"
+  }
 }
