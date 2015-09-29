@@ -1,7 +1,23 @@
 extends layout
 
 block content
-  #temperatura Temperatura °K: #{datos.main.temp}
-  #precipitacion Presión: #{datos.main.pressure}
-  #humedad Humedad: #{datos.main.humidity}
-  
+  #medidas
+    #temperatura
+      p Temperatura
+      .medida
+        p #{datos.main.temp} °C
+    #presion
+      p Presión (hpa)
+      .medida
+        p #{datos.main.pressure}
+    #humedad
+      p Humedad
+      .medida 
+        p #{datos.main.humidity} %
+    #precipitacion
+      p Lluvia ultimas 3hs
+      .medida 
+        if (datos.rain) 
+          p #{datos.rain['3h']} mm
+        else
+          p 0 mm

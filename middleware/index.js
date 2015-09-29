@@ -18,6 +18,9 @@ module.exports = function(app){
   }));
   app.use(bodyParser.json());
   app.use(function(req, res, next){
+    var date = new Date();
+    console.log(date.toString().substring(0,25)+ ' Nueva conexión: ',req.client._peername);
+
     res.locals.session = req.session;
     next(); // busca la siguiente ruta en express
   })
