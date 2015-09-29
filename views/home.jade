@@ -1,6 +1,9 @@
 extends layout
 
 block content
+  #weather
+    img(src='http://openweathermap.org/img/w/' + datos.weather[0].icon + '.png')
+    p #{datos.weather[0].description}
   #medidas
     #temperatura
       p Temperatura

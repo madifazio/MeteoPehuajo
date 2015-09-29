@@ -59,7 +59,7 @@ module.exports = function(app){
     request.post(url, {json: true}, function(err, result, body) {
       if(err) throw(err);
       if (result.statusCode === 200) {
-        console.log(body);
+        //console.log(body);
         res.status(200).render('home.jade',{
           pageTitle:'MeteoPehuajo',
           datos: body

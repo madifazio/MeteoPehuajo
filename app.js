@@ -1,8 +1,8 @@
-var path = require('path');
 var mongoose = require('mongoose');
 var express = require('express');
 var routes = require('./routes');
 var middleware = require('./middleware');
+var path = require('path');
 
 
 mongoose.connect('mongodb://localhost',function(err){
