@@ -7,18 +7,25 @@ block content
   #medidas
     #temperatura
       p Temperatura
+      .circle
+        img(src='./images/termometro.png')
       .medida
         p #{datos.main.temp} °C
     #presion
       p Presión (hpa)
+      .circle
       .medida
         p #{datos.main.pressure}
     #humedad
       p Humedad
+      .circle
+        img(src='./images/humedad.png')
       .medida 
         p #{datos.main.humidity} %
     #precipitacion
       p Lluvia ultimas 3hs
+      .circle
+        img(src='./images/lluvia.png')
       .medida 
         if (datos.rain) 
           p #{datos.rain['3h']} mm

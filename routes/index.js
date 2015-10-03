@@ -30,19 +30,22 @@ module.exports = function(app){
       }
     });
     */
-    /*
+
     // consulta del pronostico a 5 dias cada 3 horas..
     url = URL_BASE + 'forecast?id=' + CITY_ID + '&APPID=' + APPID + '&lang=es&units=metric';
     request.post(url, {json: true}, function(err, result, body) {
       if(err) throw(err);
       if (result.statusCode === 200) {
-        console.log(body);
+        body.list.forEach(function(e){
+          console.log(e.dt_txt + '-' + e.rain);
+        })
+        //console.log(body);
       }
     });
-    */
-    /*
+
+
     // consulta de estaciones alrededor de un punto.
-    url = URL_BASE + 'station/find?lat=' + LAT + '&lon=' + LON + '&cnt=5 + &APPID=' + APPID + '&lang=es' + '&units=metric';
+    url = URL_BASE + 'station/find?lat=' + LAT + '&lon=' + LON + '&cnt=10 + &APPID=' + APPID + '&lang=es' + '&units=metric';
     request.post(url, {json: true}, function(err, result, body) {
       if(err) throw(err);
       if (result.statusCode === 200) {
@@ -53,13 +56,13 @@ module.exports = function(app){
         });
       }
     });
-    */
+
     // consulta del dato actual.
     url = URL_BASE + 'weather?id=' + CITY_ID + '&APPID=' + APPID + '&lang=es&units=metric';
     request.post(url, {json: true}, function(err, result, body) {
       if(err) throw(err);
       if (result.statusCode === 200) {
-        //console.log(body);
+        console.log(body);
         res.status(200).render('home.jade',{
           pageTitle:'MeteoPehuajo',
           datos: body
