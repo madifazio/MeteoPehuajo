@@ -19,6 +19,7 @@
   "author": "Marcos Di Fazio (madifazio@gmail.com)",
   "license": "ISC",
   "dependencies": {
+    "async": "^1.4.2",
     "body-parser": "^1.14.0",
     "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
