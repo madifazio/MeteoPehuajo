@@ -34,7 +34,8 @@ module.exports = function(app){
     var datos = {};
     async.parallel([
       function(callback){
-        var url = URL_BASE + 'weather?id=' + CITY_ID + '&APPID=' + APPID + '&lang=es&units=metric';
+        //var url = URL_BASE + 'weather?id=' + CITY_ID + '&APPID=' + APPID + '&lang=es&units=metric';
+        var url = URL_BASE + 'weather?lat=' + LAT + '&lon='+ LON + '&APPID=' + APPID + '&lang=es&units=metric';
         request.post(url, {json: true}, function(err, result, body) {
           if(err) throw(err);
           if (result.statusCode === 200) {
