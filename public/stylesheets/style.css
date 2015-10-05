@@ -134,7 +134,7 @@ div#pronosticoExtendido {
 div#graficos {
     position: relative;
     top: 0;
-    background-color: #FFFFDF;
+    /* background-color: #FFFFDF; */
     height: 100px;
     width: 72%;
     float: left;

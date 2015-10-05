@@ -10,6 +10,24 @@ var LON = -61.9;
 var dias = ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
 
 module.exports = function(app){
+  app.get('/forecast',function(req, res){
+    url = URL_BASE + 'forecast?id=' + CITY_ID + '&APPID=' + APPID + '&lang=es&units=metric';
+    request.post(url, {json: true}, function(err, result, body) {
+      if(err) throw(err);
+      if (result.statusCode === 200) {
+        // transformar las fechas
+        body.list.forEach(function (e){
+          e.fecha = {
+            diaSem: dias[new Date(e.dt*1000).getDay()]
+            ,dia: new Date(e.dt*1000).getDate()
+            ,mes: new Date(e.dt*1000).getMonth() + 1
+            ,hora: ('0' + new Date(e.dt*1000).getHours()).slice(-2)
+          };
+        });
+        res.status(200).send(body);
+      }
+    });
+  })
   // home page
   app.get('/',function(req, res){
     // consulta del dato actual.
@@ -37,8 +55,8 @@ module.exports = function(app){
               e.fecha = {
                 diaSem: dias[new Date(e.dt*1000).getDay()]
                 ,dia: new Date(e.dt*1000).getDate()
-                ,mes: new Date(e.dt*1000).getMonth()
-                ,hora: new Date(e.dt*1000).getHours()
+                ,mes: new Date(e.dt*1000).getMonth() + 1
+                ,hora: ('0' + new Date(e.dt*1000).getHours()).slice(-2)
               };
             });
             datos.forecast = body;
@@ -74,19 +92,6 @@ module.exports = function(app){
     console.log(body);
     if(err) throw(err);
     if (result.statusCode === 200) {
-      console.log(body);
-    }
-  });
-  */
-  /*
-  // consulta del pronostico a 5 dias cada 3 horas..
-  url = URL_BASE + 'forecast?id=' + CITY_ID + '&APPID=' + APPID + '&lang=es&units=metric';
-  request.post(url, {json: true}, function(err, result, body) {
-    if(err) throw(err);
-    if (result.statusCode === 200) {
-      body.list.forEach(function(e){
-        console.log(e.rain);
-      })
       console.log(body);
     }
   });
