@@ -1,6 +1,6 @@
-$(document).ready(function(){
-  $('#graficos').text('');
-  $.get('/forecast',function(data){
+$.get('/forecast',function(data){
+  $(document).ready(function(){
+    $('#graficos').text('');
     console.log(data);
 
     var temperatura = $.map(data.list,function(e){

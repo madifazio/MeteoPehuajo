@@ -15,6 +15,6 @@ module.exports = function(app){
   // 500
   app.use(function(err, req, res, next){
     console.error('error en %s\n', req.url, err);
-    res.send(500, 'Oops, algo salió mal');
+    res.status(500).send('Oops, algo salió mal ' + err.message);
   })
 }

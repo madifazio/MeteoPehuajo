@@ -3,14 +3,15 @@ var request = require('request');
 var async = require('async');
 
 var CITY_ID = '3841679';
-var APPID = 'c1b55ebf32c85bf328cf2832811d354';
+var APPID = 'c1b55ebf32c85bf328cf2832811d354c';
 var URL_BASE = 'http://api.openweathermap.org/data/2.5/';
 var LAT = -35.81;
 var LON = -61.9;
 var dias = ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
 
+
 module.exports = function(app){
-  app.get('/forecast',function(req, res){
+  app.get('/forecast',function(req, res, next){
     url = URL_BASE + 'forecast?id=' + CITY_ID + '&APPID=' + APPID + '&lang=es&units=metric';
     request.post(url, {json: true}, function(err, result, body) {
       if(err) throw(err);
@@ -25,11 +26,13 @@ module.exports = function(app){
           };
         });
         res.status(200).send(body);
+      }else{
+        next(new Error(body));
       }
     });
   })
   // home page
-  app.get('/',function(req, res){
+  app.get('/',function(req, res, next){
     // consulta del dato actual.
     var datos = {};
     async.parallel([
@@ -43,6 +46,8 @@ module.exports = function(app){
             body.dt = new Date(body.dt*1000).toLocaleTimeString();
             datos.weather = body;
             callback();
+          }else{
+            next(new Error(body));
           }
         });
       },
@@ -63,6 +68,8 @@ module.exports = function(app){
             datos.forecast = body;
             //console.log(datos.forecast);
             callback();
+          }else{
+            next(new Error(body));
           }
         });
       }
