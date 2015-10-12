@@ -1,4 +1,4 @@
 
 exports.Visita = require('./visita');
 exports.Clima = require('./clima');
-//exports.Comment = require('./comment');
+exports.Forecast = require('./forecast');
