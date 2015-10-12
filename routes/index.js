@@ -42,7 +42,7 @@ module.exports = function(app){
         request.post(url, {json: true}, function(err, result, body) {
           if(err) throw(err);
           if (result.statusCode === 200) {
-            console.log(body);
+            //console.log(body);
             body.dt = new Date(body.dt*1000).toLocaleTimeString();
             datos.weather = body;
             callback();
@@ -75,7 +75,7 @@ module.exports = function(app){
       }
     ],function(err){
       if(err) throw (err);
-      console.log(datos.forecast.list[0]);
+      //console.log(datos.forecast.list[0]);
       res.status(200).render('home.jade',{
         pageTitle:'MeteoPehuajo',
         datos: datos

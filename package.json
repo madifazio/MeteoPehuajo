@@ -27,6 +27,7 @@
     "express-session": "^1.11.3",
     "jade": "^1.11.0",
     "mongoose": "^4.1.8",
+    "mongoose-lifecycle": "^1.0.0",
     "morgan": "^1.6.1",
     "request": "^2.64.0",
     "serve-favicon": "^2.3.0",
