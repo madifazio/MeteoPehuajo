@@ -4,6 +4,7 @@ var request = require('request');
 var async = require('async');
 var Clima = mongoose.model('Clima');
 var Forecast = mongoose.model('Forecast');
+var Visita = mongoose.model('Visita');
 
 
 var dias = ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
@@ -54,6 +55,14 @@ module.exports = function(app){
             };
           });
           datos.forecast = forecast;
+          callback();
+        });
+      },
+      // consulto cantidad de visitas a la pagina principal.
+      function(callback){
+        Visita.count({'url':'/'},function(err, c){
+          if(err) throw err;
+          datos.visitas = c;
           callback();
         });
       }

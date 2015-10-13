@@ -36,6 +36,12 @@ var schema = mongoose.Schema({
     clouds: {
       all:Number
     },
+    rain: {
+      '3h': Number
+    },
+    snow: {
+      '3h': Number
+    },
     wind: {
       speed:Number,
       deg:Number

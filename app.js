@@ -26,7 +26,7 @@ mongoose.connect('mongodb://localhost/MeteoPehuajo',function(err){
     request.post(url, {json: true}, function(err, result, body) {
       if(err) throw(err);
       if (result.statusCode === 200) {
-        console.log(body);
+        //console.log(body);
         var clima = new Clima(body);
         clima.save(function(err){
           if(err) throw err;

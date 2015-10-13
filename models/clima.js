@@ -1,7 +1,14 @@
 
 var mongoose = require('mongoose');
 var createdDate = require('../plugins/createdDate');
+var Twitter = require('twitter');
 
+var client = new Twitter({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+});
 // define the schema
 var schema = mongoose.Schema({
   coord: { lon: Number, lat: Number },
@@ -74,10 +81,15 @@ schema.plugin(lifecycle);
 var Clima = mongoose.model('Clima', schema);
 
 // handle events
-Clima.on('afterInsert', function (post) {
-  // fake tweet this
-  var url = "http://localhost:3000/posts/";
-  console.log('Read my new blog post! %s%s', url, post.id);
+Clima.on('afterInsert', function (clima) {
+  console.log('Temperatura en %s %s°C', clima.name, clima.main.temp);
+  client.post('statuses/update',
+    {status: 'Temperatura en ' + clima.name + ', ' + clima.main.temp + '°C'},
+    function(error, tweet, response){
+    if (!error) {
+      console.log(tweet);
+    }
+  });
 })
 
 Clima.on('afterRemove', function (post) {
