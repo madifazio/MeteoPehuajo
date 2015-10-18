@@ -11,6 +11,7 @@ var client = new Twitter({
 });
 // define the schema
 var schema = mongoose.Schema({
+  origen: String,
   coord: { lon: Number, lat: Number },
   weather:[ {
     id: Number,
@@ -21,6 +22,7 @@ var schema = mongoose.Schema({
   base: String,
   main:{
     temp: Number,
+    sens: Number,
     pressure: Number,
     humidity: Number,
     temp_min: Number,
@@ -28,6 +30,12 @@ var schema = mongoose.Schema({
     sea_level: Number,
     grnd_level: Number
   },
+  rain: {
+    '3h': Number,
+    '1h': Number,
+    'today': Number
+  },
+  snow: {'3h': Number},
   wind: { speed: Number, deg: Number },
   clouds: { all: Number },
   dt: String,
@@ -83,13 +91,15 @@ var Clima = mongoose.model('Clima', schema);
 // handle events
 Clima.on('afterInsert', function (clima) {
   console.log('Temperatura en %s %s°C', clima.name, clima.main.temp);
-  client.post('statuses/update',
-    {status: 'Temperatura en ' + clima.name + ', ' + clima.main.temp + '°C'},
-    function(error, tweet, response){
-    if (!error) {
-      console.log(tweet);
-    }
-  });
+  if(clima.origen == 'WU'){
+    client.post('statuses/update',
+      {status: 'Temperatura en ' + clima.name + ', ' + clima.main.temp + '°C'},
+      function(err, tweet, response){
+        if (err) console.log(err);
+        else     console.log(tweet);
+      }
+    );
+  }
 })
 
 Clima.on('afterRemove', function (post) {

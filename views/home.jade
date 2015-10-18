@@ -5,9 +5,12 @@ block content
   #medidas
     #weather.med
       .circle
-        img(src='http://openweathermap.org/img/w/' + datos.weather.weather[0].icon + '.png')
+        if(datos.weather.origen == 'WU')
+          img(src='http://icons.wxug.com/i/c/j/' + datos.weather.weather[0].icon + '.gif')
+        else
+          img(src='http://openweathermap.org/img/w/' + datos.weather.weather[0].icon + '.png')
       .medida
-        p #{datos.weather.weather[0].description}
+        p #{datos.weatherOWM.weather[0].description}
     #temperatura.med
       .circle
         img(src='./images/termometro.png')
@@ -17,7 +20,10 @@ block content
       .circle
         img(src='./images/presion.png')
       .medida
-        p #{datos.weather.main.pressure} hPa
+        if(datos.weather.main.pressure == 0)
+          p #{datos.weatherOWM.main.pressure} hPa
+        else
+          p #{datos.weather.main.pressure} hPa
     #humedad.med
       .circle
         img(src='./images/humedad.png')
@@ -28,7 +34,7 @@ block content
         img(src='./images/lluvia.png')
       .medida 
         if (datos.weather.rain) 
-          p #{datos.weather.rain['3h']} mm
+          p #{datos.weather.rain['1h']} mm
         else
           p Diaria
             span 0 mm
@@ -38,18 +44,19 @@ block content
             span 150 mm
     #viento.med
       .circle
-        img(src='./images/humedad.png')
+        img(src='./images/viento.png')
       .medida 
-        p #{datos.weather.main.humidity} %
+        p #{datos.weather.wind.speed} km/h
   #graficos graficos  
   #pronosticoExtendido 
     each fc in datos.forecast.list
       .extendido
         em #{fc.fecha.diaSem}
         p #{fc.fecha.dia}/#{fc.fecha.mes}
-        p hora: #{fc.fecha.hora}
         img(src='http://openweathermap.org/img/w/' + fc.weather[0].icon + '.png')
         p #{fc.weather[0].description}
-        p #{fc.main.temp} °C
-        p #{fc.main.pressure} hpa
-        p #{fc.main.humidity} %
+        p Mín: #{fc.temp.min} °C
+        p Máx: #{fc.temp.max} °C
+        p #{fc.pressure} hpa
+        p Hum: #{fc.humidity} %
+        p Viento: #{fc.speed} km/h
