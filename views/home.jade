@@ -5,10 +5,10 @@ block content
   #medidas
     #weather.med
       .circle
-        if(datos.weather.origen == 'WU')
-          img(src='http://icons.wxug.com/i/c/j/' + datos.weather.weather[0].icon + '.gif')
-        else
-          img(src='http://openweathermap.org/img/w/' + datos.weather.weather[0].icon + '.png')
+        //if(datos.weather.origen == 'WU')
+          //img(src='http://icons.wxug.com/i/c/j/' + datos.weather.weather[0].icon + '.gif')
+        //else
+        img(src='http://openweathermap.org/img/w/' + datos.weatherOWM.weather[0].icon + '.png')
       .medida
         p #{datos.weatherOWM.weather[0].description}
     #temperatura.med
@@ -53,10 +53,11 @@ block content
       .extendido
         em #{fc.fecha.diaSem}
         p #{fc.fecha.dia}/#{fc.fecha.mes}
-        img(src='http://openweathermap.org/img/w/' + fc.weather[0].icon + '.png')
+        //img(src='http://openweathermap.org/img/w/' + fc.weather[0].icon + '.png')
+        img(src='http://icons.wxug.com/i/c/j/' + fc.weather[0].icon + '.gif')
         p #{fc.weather[0].description}
         p Mín: #{fc.temp.min} °C
         p Máx: #{fc.temp.max} °C
-        p #{fc.pressure} hpa
+        //p #{fc.pressure} hpa
         p Hum: #{fc.humidity} %
         p Viento: #{fc.speed} km/h

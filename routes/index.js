@@ -59,10 +59,14 @@ module.exports = function(app){
       },
       // consulto el último pronóstico
       function(callback){
-        Forecast16dias.findOne().sort({'created':-1}).exec(function(err, forecast){
+        Forecast16dias.find({'origen':'WU'})
+          .sort({'created':-1})
+          .limit(1)
+          .exec(function(err, forecast){
           if(err) throw err;
+          var fc = forecast[0]._doc;
           // transformar las fechas
-          forecast.list.forEach(function (e){
+          fc.list.forEach(function (e){
             e.fecha = {
               diaSem: dias[new Date(e.dt*1000).getDay()]
               ,dia: new Date(e.dt*1000).getDate()
@@ -73,7 +77,7 @@ module.exports = function(app){
             e.temp.max = e.temp.max.toFixed(0);
             e.speed = e.speed.toFixed(1);
           });
-          datos.forecast = forecast;
+          datos.forecast = fc;
           callback();
         });
       },

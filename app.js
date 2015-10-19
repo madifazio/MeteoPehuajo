@@ -127,6 +127,7 @@ mongoose.connect('mongodb://localhost/MeteoPehuajo',function(err){
         forecast.city.name = 'Pehuajó';
         forecast.list = new Array();
         body.forecast.simpleforecast.forecastday.forEach(function(e){
+          if(e.period == 1) return;
           forecast.list.push({
             dt: parseInt(e.date.epoch),
             temp:{

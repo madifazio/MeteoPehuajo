@@ -77,13 +77,14 @@ div#content {
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
-    /* width: 900px; */
+    width: 800px;
     /* display: flex; */
     justify-content: space-between;
     text-align: center;
     /* height: 100%; */
     /* min-width: 815px; */
     /* position: absolute; */
+    display: inline-block;
     /* top: 157px; */
     /* left: 220px; */
 }
@@ -106,7 +107,7 @@ em {}
 
 .extendido {
     /* text-align: left; */
-    width: 10%;
+    width: 14%;
     font-size: 0.8em;
     margin-bottom: 15px;
     border-bottom: black;
@@ -136,7 +137,7 @@ div#graficos {
     top: 0;
     /* background-color: #FFFFDF; */
     height: 100px;
-    width: 72%;
+    width: 500px;
     float: left;
     height: 443px;
     display: inline-block;
@@ -232,16 +233,16 @@ div#medidas {
     /* border-bottom-width: thin; */
     display: inline-block;
     float: left;
-    width: 28%;
+    width: 250px;
 }
 
 div#publiRight {
-    float: right;
+    /* float: right; */
     /* padding: 10px 10px 10px 20px; */
 }
 
 div#publiLeft {
-    float: left;
+    /* float: left; */
     /* padding: 10px 20px 10px 10px; */
 }
 
@@ -251,14 +252,23 @@ div#publiLeft {
   background: white;
   /* height: 100%; */
   /* margin: 0px 5px 0px 5px; */
+  display: inline-block;
+  /* margin: auto; */
+  /* position: relative; */
+  /* top: 0px; */
+  /* height: 100%; */
+  /* position: relative; */
+  /* top: -800px; */
+  vertical-align: top;
 }
 
 div#fondo {
-    margin-left: auto;
-    margin-right: auto;
-    width: auto;
+    /* display: inline-block; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* width: auto; */
     /* margin-top: 15px; */
-    padding: 0px 0px 0px 0px;
+    /* padding: 0px 0px 0px 0px; */
     /* overflow: hidden; */
     /* height: 100%; */
 }
