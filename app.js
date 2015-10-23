@@ -70,6 +70,7 @@ mongoose.connect('mongodb://localhost/MeteoPehuajo',function(err){
       }
     });
     // Condición actual según WU
+    //http://api.wunderground.com/api/3d9de40bc89e46e8/conditions/lang:SP/q/Argentina/Pehuajo.json
     url = URL_BASE_WU + WU_KEYID + '/conditions/lang:SP/q/Argentina/Pehuajo.json';
     request.post(url, {json: true}, function(err, result, body) {
       if(err) throw(err);
@@ -166,3 +167,50 @@ mongoose.connect('mongodb://localhost/MeteoPehuajo',function(err){
     console.log('Express escuchando en el puerto 3000');
   })
 })
+/*
+> db.climas.aggregate([{$group: {_id:'$dt' , lluvia:{$avg:'$rain.3h'}, origen:{$max:'$origen'} }}, { $sort : { _id : -1 } } ] )
+{ "_id" : "16:56:07", "lluvia" : 0, "origen" : null }
+{ "_id" : "15:30:58", "lluvia" : 0, "origen" : null }
+{ "_id" : "1445298596", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445297996", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445297396", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445296796", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445296197", "lluvia" : 12.165, "origen" : "OWM" }
+{ "_id" : "1445296196", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445295596", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445294996", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445294396", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445293796", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445293196", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445292596", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445292096", "lluvia" : 0.18500000000000003, "origen" : "OWM" }
+{ "_id" : "1445291996", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445289598", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445288998", "lluvia" : 0, "origen" : "WU" }
+{ "_id" : "1445288399", "lluvia" : 0.185, "origen" : "OWM" }
+{ "_id" : "1445288398", "lluvia" : 0, "origen" : "WU" }
+Type "it" for more
+> db.climas.find({},{dt:1,rain:1,_id:0}).sort({created:-1})
+{ "dt" : "1445298596", "rain" : { "1h" : 0 } }
+{ "dt" : "1445296197", "rain" : { "3h" : 12.165 } }
+{ "dt" : "1445297996", "rain" : { "1h" : 0 } }
+{ "dt" : "1445296197", "rain" : { "3h" : 12.165 } }
+{ "dt" : "1445296197", "rain" : { "3h" : 12.165 } }
+{ "dt" : "1445297396", "rain" : { "1h" : 0 } }
+{ "dt" : "1445296796", "rain" : { "1h" : 0 } }
+{ "dt" : "1445296197", "rain" : { "3h" : 12.165 } }
+{ "dt" : "1445296197", "rain" : { "3h" : 12.165 } }
+{ "dt" : "1445296196", "rain" : { "1h" : 0 } }
+{ "dt" : "1445292096", "rain" : { "3h" : 0.185 } }
+{ "dt" : "1445295596", "rain" : { "1h" : 0 } }
+{ "dt" : "1445292096", "rain" : { "3h" : 0.185 } }
+{ "dt" : "1445294996", "rain" : { "1h" : 0 } }
+{ "dt" : "1445292096", "rain" : { "3h" : 0.185 } }
+{ "dt" : "1445294396", "rain" : { "1h" : 0 } }
+{ "dt" : "1445292096", "rain" : { "3h" : 0.185 } }
+{ "dt" : "1445293796", "rain" : { "1h" : 0 } }
+{ "dt" : "1445292096", "rain" : { "3h" : 0.185 } }
+{ "dt" : "1445293196", "rain" : { "1h" : 0 } }
+Type "it" for more
+> db.climas.find({},{dt:1,rain:1,_id:0}).sort({created:-1})
+*/

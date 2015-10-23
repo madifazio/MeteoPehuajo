@@ -20,10 +20,8 @@ block content
       .circle
         img(src='./images/presion.png')
       .medida
-        if(datos.weather.main.pressure == 0)
-          p #{datos.weatherOWM.main.pressure} hPa
-        else
-          p #{datos.weather.main.pressure} hPa
+        p #{datos.weatherOWM.main.pressure} hPa (owm)
+        p #{datos.weather.main.pressure} hPa (wu)
     #humedad.med
       .circle
         img(src='./images/humedad.png')
@@ -34,7 +32,8 @@ block content
         img(src='./images/lluvia.png')
       .medida 
         if (datos.weather.rain) 
-          p #{datos.weather.rain['1h']} mm
+          p #{datos.weatherOWM.rain['3h']} mm (owm)
+          p #{datos.weather.rain['1h']} mm (wu)
         else
           p Diaria
             span 0 mm
@@ -47,6 +46,7 @@ block content
         img(src='./images/viento.png')
       .medida 
         p #{datos.weather.wind.speed} km/h
+  
   #graficos graficos  
   #pronosticoExtendido 
     each fc in datos.forecast.list
