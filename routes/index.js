@@ -28,8 +28,13 @@ module.exports = function(app){
     });
   })
   app.get('/clima',function(req, res, next){
+    getClimaActual(req, res, function(err, datos){
+      if(err) throw (err);
+      //console.log(datos.forecast.list[0]);
+      res.status(200).send(datos);
+      console.log(datos);
+    });
     // consulta del dato actual.
-    var datos = {};
 
   });
   // home page
@@ -46,7 +51,7 @@ module.exports = function(app){
   // error handlers
   errors(app);
 }
-function getClimaActual(req, res, callback){
+function getClimaActual(req, res, callback1){
   async.parallel({
     // consulto el clima mas nuevo según WU
     climaWU:function(callback){
@@ -176,6 +181,6 @@ function getClimaActual(req, res, callback){
       });
     }
     },
-    callback(err, datos)
+    callback1
   );
 }

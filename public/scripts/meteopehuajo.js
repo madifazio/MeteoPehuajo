@@ -102,4 +102,4 @@ setInterval(function(){
     }
     console.log(data);
   });
-},10000);
+},60000);
