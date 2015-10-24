@@ -93,3 +93,13 @@ $.get('/forecast',function(data){
     });
   });
 });
+// cada un minuto actualizo las medidas.
+setInterval(function(){
+  $.get('/clima',function(err, data){
+    if(err){
+       console.log(err);
+       return;
+    }
+    console.log(data);
+  });
+},10000);

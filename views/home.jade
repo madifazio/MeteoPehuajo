@@ -1,32 +1,32 @@
 extends layout
 
 block content
-  p Actualizado #{datos.weather.dt}
+  p Actualizado #{datos.climaWU.dt}
   #medidas
     #weather.med
       .circle
         //if(datos.weather.origen == 'WU')
           //img(src='http://icons.wxug.com/i/c/j/' + datos.weather.weather[0].icon + '.gif')
         //else
-        img(src='http://openweathermap.org/img/w/' + datos.weatherOWM.weather[0].icon + '.png')
+        img(src='http://openweathermap.org/img/w/' + datos.climaOWM.weather[0].icon + '.png')
       .medida
-        p #{datos.weatherOWM.weather[0].description}
+        p #{datos.climaOWM.weather[0].description}
     #temperatura.med
       .circle
         img(src='./images/termometro.png')
       .medida
-        p #{datos.weather.main.temp} °C
+        p #{datos.climaWU.main.temp} °C
     #presion.med
       .circle
         img(src='./images/presion.png')
       .medida
-        p #{datos.weatherOWM.main.pressure} hPa (owm)
-        p #{datos.weather.main.pressure} hPa (wu)
+        p #{datos.climaOWM.main.pressure} hPa (owm)
+        p #{datos.climaWU.main.pressure} hPa (wu)
     #humedad.med
       .circle
         img(src='./images/humedad.png')
       .medida 
-        p #{datos.weather.main.humidity} %
+        p #{datos.climaWU.main.humidity} %
     #precipitacion.med
       .circle
         img(src='./images/lluvia.png')
@@ -38,7 +38,7 @@ block content
       .circle
         img(src='./images/viento.png')
       .medida 
-        p #{datos.weather.wind.speed} km/h
+        p #{datos.climaWU.wind.speed} km/h
   
   #graficos graficos  
   #pronosticoExtendido 
