@@ -31,16 +31,9 @@ block content
       .circle
         img(src='./images/lluvia.png')
       .medida 
-        if (datos.weather.rain) 
-          p #{datos.weatherOWM.rain['3h']} mm (owm)
-          p #{datos.weather.rain['1h']} mm (wu)
-        else
-          p Diaria
-            span 0 mm
-          p.p1 Mensual
-            span 10 mm
-          p.p1 Anual
-            span 150 mm
+        p hoy: #{datos.lluviaOWM.hoy} mm
+        p mes: #{datos.lluviaOWM.mes} mm
+        p año: #{datos.lluviaOWM.anio} mm
     #viento.med
       .circle
         img(src='./images/viento.png')

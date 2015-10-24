@@ -1,0 +1,40 @@
+db = db.getSiblingDB('MeteoPehuajo');
+printjson(
+  db.climas.aggregate([
+    {
+      $match:{
+        'rain.3h':{$gt:0}
+      }
+    },
+    {
+      $project:{
+        dt:1,
+        'rain.3h':1
+      }
+    },
+    {
+      $group:{
+        _id:'$dt',
+        //cantidad:{$sum:1},
+        lluvia:{$first:'$rain.3h'}
+      }
+    },
+    {
+      $sort:{
+        _id:-1
+      }
+    },
+    {
+      $group:{
+        _id:'$lluvia',
+        //cantidad:{$sum:1},
+        dt:{$first:'$_id'}
+      }
+    },
+    {
+      $sort:{
+        dt:-1
+      }
+    },
+  ])
+);
