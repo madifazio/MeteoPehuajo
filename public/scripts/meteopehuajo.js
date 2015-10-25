@@ -95,11 +95,11 @@ $.get('/forecast',function(data){
 });
 // cada un minuto actualizo las medidas.
 setInterval(function(){
-  $.get('/clima',function(err, data){
-    if(err){
-       console.log(err);
-       return;
-    }
-    console.log(data);
+  $.get('/clima',function(data){
+    //$('.medida > p','#temperatura').text(data.climaWU.main.temp);
+    //$('.medida > p','#temperatura').text('hola');
+    //$('body').html(data);
+    $(medidas).html($('#medidas',data).html());
+    $(pronosticoExtendido).html($('#pronosticoExtendido',data).html());
   });
-},60000);
+},10000);

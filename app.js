@@ -58,6 +58,7 @@ mongoose.connect('mongodb://localhost/MeteoPehuajo',function(err){
     url = URL_BASE_OWM + 'forecast/daily?id=' + CITY_ID + '&cnt=7' + '&APPID=' + APPID + '&lang=es&units=metric';
     request.post(url, {json: true}, function(err, result, body) {
       if(err) throw(err);
+      if(body == null) throw('err OWM body null');
       if (result.statusCode === 200) {
         //console.log(body);
         body.origen = 'OWM';

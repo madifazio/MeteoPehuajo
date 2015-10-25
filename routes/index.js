@@ -31,17 +31,18 @@ module.exports = function(app){
     getClimaActual(req, res, function(err, datos){
       if(err) throw (err);
       //console.log(datos.forecast.list[0]);
-      res.status(200).send(datos);
-      console.log(datos);
+      console.log('actualizacion');
+      //res.status(200).send(datos);
+      res.status(200).render('home.jade',{
+        pageTitle:'MeteoPehuajo',
+        datos: datos
+      });
     });
-    // consulta del dato actual.
-
   });
   // home page
   app.get('/', function(req, res, next){
     getClimaActual(req, res, function(err, datos){
       if(err) throw (err);
-      //console.log(datos.forecast.list[0]);
       res.status(200).render('home.jade',{
         pageTitle:'MeteoPehuajo',
         datos: datos
