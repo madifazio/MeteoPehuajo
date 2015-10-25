@@ -9,7 +9,9 @@ var Visita = mongoose.model('Visita');
 
 
 var dias = ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-
+var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"
+];
 
 module.exports = function(app){
   app.get('/forecast',function(req, res, next){
@@ -142,6 +144,11 @@ function getClimaActual(req, res, callback1){
           if(e.dt >= mes) lluviaOWM.mes += e._id;
           if(e.dt >= anio)lluviaOWM.anio += e._id;
         });
+        lluviaOWM.hoy = lluviaOWM.hoy.toFixed(1);
+        lluviaOWM.mes = lluviaOWM.mes.toFixed(1);
+        lluviaOWM.anio = lluviaOWM.anio.toFixed(1);
+        lluviaOWM.mestxt = meses[hoy.getMonth()];
+        lluviaOWM.aniotxt = hoy.getFullYear();
 
         /*datos.lluviaOWM = clima.map(function(e){
           e.dt = new Date(parseInt(e.dt) * 1000);

@@ -32,8 +32,8 @@ block content
         img(src='./images/lluvia.png')
       .medida 
         p hoy: #{datos.lluviaOWM.hoy} mm
-        p mes: #{datos.lluviaOWM.mes} mm
-        p año: #{datos.lluviaOWM.anio} mm
+        p #{datos.lluviaOWM.mestxt}: #{datos.lluviaOWM.mes} mm
+        p #{datos.lluviaOWM.aniotxt}: #{datos.lluviaOWM.anio} mm
     #viento.med
       .circle
         img(src='./images/viento.png')
